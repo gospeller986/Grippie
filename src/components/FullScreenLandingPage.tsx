@@ -126,11 +126,11 @@ export const FullScreenLandingPage = () => {
                                     <div className='mt-[40px]'>
                                         <AboutGallery />
                                     </div>
-                                    <div className='md:mt-[124px] z-10'>
+                                    <div className='md:mt-[0px] z-10'>
                                         <BrowseMenu />
                                     </div>
                                 </div>
-                                <div className='md:w-[30%] md:flex md:flex-col md:items-center  mt-[32px] md:mb-10 md:gap-[45px]' >
+                                <div className='md:w-[30%] md:flex md:flex-col md:items-center  mt-[32px] md:mb-10 md:gap-[48px]' >
                                     <OfferSlider />
                                     <AdditionalInfo />
                                 </div>
