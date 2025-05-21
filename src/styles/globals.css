@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@tailwind utilities;
+@import "tw-animate-css";
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-show {
+  scrollbar-width: auto;
+  -ms-overflow-style: auto;
+}
+.scrollbar-show::-webkit-scrollbar {
+  display: block;
+}
+
+@font-face {
+	font-family: 'ProximaNovaA';
+	src: url('../assets/fonts/ProximaNovaA-Semibold.woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNovaT';
+	src: url('../assets/fonts/ProximaNovaA-Thin.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNovaL';
+	src: url('../assets/fonts/ProximaNovaA-Light.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNovaR';
+	src: url('../assets/fonts/ProximaNovaA-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Prometo';
+	src: url('../assets/fonts/fonnts.com-Prometo_Trial_Rg.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+button {
+  @apply transition-transform transform duration-150 ease-in-out hover:scale-105 active:scale-95 touch-manipulation cursor-pointer;
+}
+
