@@ -72,7 +72,7 @@ const EventBookingPage = () => {
                                 borderRadius: "20px"
                             }}
                         >
-                            <div className=" bg-white p-4 rounded-[20px]" style={{ borderRadius: "20px" }}>
+                            <div className=" bg-white p-[18px] rounded-[20px]" style={{ borderRadius: "20px" }}>
 
                                 <div className='md:flex md:flex-row md:gap-[80px] md:justify-center md:my-3'>
                                     <div>
@@ -90,7 +90,7 @@ const EventBookingPage = () => {
                                             <h1 style={{ fontSize: 18, fontWeight: 700, color: "#8B6EC1", fontFamily: "ProximaNovaA" }}>Choose Entry Package</h1>
                                         </div>
 
-                                        <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[21px] ' />
+                                        <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[25px] ' />
 
                                         <EntryPackages
                                             stagCount={stagCount}
@@ -106,7 +106,7 @@ const EventBookingPage = () => {
                                     <div>
                                         <div>
 
-                                            <div className='flex flex-row items-center gap-3 mt-[58px] md:mt-0 px-3'>
+                                            <div className='flex flex-row items-center gap-3 mt-[49px] md:mt-0 px-3'>
                                                 <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M5 1C5 0.585786 4.66421 0.25 4.25 0.25C3.83578 0.25 3.5 0.585786 3.5 1H5ZM3.5 3.46385C3.5 3.87806 3.83578 4.21385 4.25 4.21385C4.66421 4.21385 5 3.87806 5 3.46385H3.5ZM10 3.46385C10 3.87806 10.3358 4.21385 10.75 4.21385C11.1642 4.21385 11.5 3.87806 11.5 3.46385H10ZM11.5 1.00002C11.5 0.58581 11.1642 0.250023 10.75 0.250023C10.3358 0.250023 10 0.58581 10 1.00002H11.5ZM1 12.5495L1.75 12.5495L1 12.5495ZM1.00001 4.38098L1.75001 4.38099V4.38098H1.00001ZM3.5 1V3.46385H5V1H3.5ZM10.75 2.68044H11.5625V1.18044H10.75V2.68044ZM10 1.93044V3.46385H11.5V1.93044H10ZM11.5 1.93044V1.00002H10V1.93044H11.5ZM0.250004 12.5495C0.250001 14.3133 1.67332 15.75 3.4375 15.75V14.25C2.50929 14.25 1.75 13.4924 1.75 12.5495L0.250004 12.5495ZM13.25 12.5495C13.25 13.4924 12.4907 14.25 11.5625 14.25V15.75C13.3267 15.75 14.75 14.3133 14.75 12.5495H13.25ZM14.75 4.38098C14.75 2.61715 13.3267 1.18044 11.5625 1.18044V2.68044C12.4907 2.68044 13.25 3.43802 13.25 4.38098H14.75ZM1.75001 4.38098C1.75001 3.43802 2.5093 2.68044 3.43751 2.68044V1.18044C1.67333 1.18044 0.250009 2.61715 0.250009 4.38098H1.75001ZM1 6.85398H14V5.35398H1V6.85398ZM13.25 4.38098V12.5495H14.75V4.38098H13.25ZM1.75 12.5495L1.75001 4.38099L0.250009 4.38098L0.250004 12.5495L1.75 12.5495ZM3.43751 2.68044H10.75V1.18044H3.43751V2.68044ZM11.5625 14.25H3.4375V15.75H11.5625V14.25Z" fill="#8B6EC1" />
                                                 </svg>

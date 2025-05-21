@@ -2,7 +2,7 @@ import React from 'react'
 
 const EventOffer = () => {
     return (
-        <div className="relative w-full mt-[70px] md:mt-0 mb-[50px]">
+        <div className="relative w-full mt-[56px] md:mt-0 mb-[36px]">
 
             <span className="absolute -top-2 left-4 bg-white px-2 text-[18px] text-[#8B6EC1] font-semibold flex flex-row  justify-center items-center gap-2">
                 <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,8 +26,8 @@ const EventOffer = () => {
                     background: 'radial-gradient(146.49% 146.68% at 64.38% 89.8%, #BD91FF 35.15%, #FAFAFA 74.52%)',
                 }}
             >
-                <div className=" bg-white p-4 rounded-tr-[12px] rounded-tl-[12px]" style={{}}>
-                    <div className="mt-[32px] md:mt-[50px] px-[18px] ">
+                <div className=" bg-white px-[18px] pb-[33px] pt-[42px] rounded-tr-[12px] rounded-tl-[12px]" style={{}}>
+                    <div className=" md:mt-[50px]  ">
                         <div className='w-full h-[84px] rounded-[12px] flex flex-row '
 
                         >
@@ -36,7 +36,7 @@ const EventOffer = () => {
                                     background: "linear-gradient(39.89deg, #BD91FF 0.49%, #3963D7 47.53%)"
                                 }}
                             >
-                                <svg width="75" height="84" viewBox="0 0 75 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className='rounded-tl-[12px]' width="75" height="84" viewBox="0 0 75 84" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_201_769" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="72" height="84">
                                         <path d="M12 0.5H71.5V83.5H12C5.64873 83.5 0.5 78.3513 0.5 72V12C0.5 5.64873 5.64873 0.5 12 0.5Z" fill="url(#paint0_linear_201_769)" stroke="#BD91FF" />
                                     </mask>
@@ -91,14 +91,14 @@ const EventOffer = () => {
                             </div>
                         </div>
                         <div className='h-[1px] bg-[#C4C4C4] w-full px-[18px] opacity-[48%] my-[20px]' />
-                        <div className='w-full h-[84px] rounded-[12px] flex flex-row mb-[33px] md:mb-[50px] '
+                        <div className='w-full  rounded-[12px] flex flex-row  md:mb-[50px] '
                         >
-                            <div className='w-[72px] h-[84px] rounded-tl-[12px] rounded-bl-[12px]'
+                            <div className='w-[72px]  rounded-tl-[12px] rounded-bl-[12px]'
                                 style={{
                                     background: "linear-gradient(39.89deg, #BD91FF 0.49%, #3963D7 47.53%)"
                                 }}
                             >
-                                <svg width="75" height="84" viewBox="0 0 75 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className='rounded-tl-[12px]' width="75" height="84" viewBox="0 0 75 84" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_201_769" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="72" height="84">
                                         <path d="M12 0.5H71.5V83.5H12C5.64873 83.5 0.5 78.3513 0.5 72V12C0.5 5.64873 5.64873 0.5 12 0.5Z" fill="url(#paint0_linear_201_769)" stroke="#BD91FF" />
                                     </mask>
@@ -128,7 +128,7 @@ const EventOffer = () => {
                                 </svg>
                             </div>
                             <div
-                                className="w-full h-[84px] rounded-tr-[12px] rounded-br-[12px] p-[2px]"
+                                className="w-full  rounded-tr-[12px] rounded-br-[12px] p-[2px]"
                                 style={{
                                     background: "linear-gradient(92.54deg, #F1FBE1 -5.89%, #C7BFD8 115.93%)",
                                 }}
@@ -146,7 +146,7 @@ const EventOffer = () => {
                                             fontSize: '12px',
                                             fontWeight: 600,
                                             color: "#6F6F6F"
-                                        }}>Valid Thu & Sat  ·  from 5PM - 12 AM</p>
+                                        }}>Valid Thu & Sat  </p>
                                     </div>
 
                                 </div>
@@ -156,18 +156,20 @@ const EventOffer = () => {
                 </div>
             </div>
             <div
-                className=" p-[1px] h-[122px] md:h-[142px] rounded-br-2xl rounded-bl-2xl overflow-hidden"
+                className=" p-[1px]  md:h-[142px] rounded-br-2xl rounded-bl-2xl overflow-hidden"
                 style={{
                     background: 'radial-gradient(146.49% 146.68% at 64.38% 89.8%, #BD91FF 35.15%, #FAFAFA 74.52%)',
                 }}
             >
-                <div className=" h-[122px] md:h-[142px] p-4 rounded-br-2xl rounded-bl-2xl" style={{
+                <div className="  md:h-[142px] py-[28px] pl-[28px] rounded-br-2xl rounded-bl-2xl" style={{
                     background: "radial-gradient(140.65% 140.65% at 17.4% 5.37%, #FAFAFA 0%, #FAFAFA 49.5%, #F2EDFC 100%)",
                     display: 'flex',
-                    justifyContent: 'center',
                     alignItems: "center"
                 }}>
-                    <ul className="list-disc pl-5 text-[#8170A2]">
+                    <ul className="list-disc pl-5 text-[#8170A2]" style={{ 
+                        fontFamily : 'ProximaNovaA',
+                        fontSize : "15px"
+                    }}>
                         <li>Inclusion details will be added here</li>
                         <li>Inclusion details will be added here</li>
                         <li>Inclusion details will be added here</li>

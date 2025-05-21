@@ -64,9 +64,9 @@ const EventDateList = (props: Props) => {
                         }}
                     >
                         <div>
-                            <h1 style={{ fontSize: "10px", fontWeight: "600", }}>{currDate.dayStr}</h1>
+                            <h1 style={{ fontSize: "10px", fontWeight: "600", fontFamily : "ProximaNovaA" , marginBottom : "5px" }}>{currDate.dayStr.toUpperCase()}</h1>
                             <h1 style={{ fontSize: "20px", fontWeight: "700", lineHeight: "16px" }}>{currDate.dateStr}</h1>
-                            <h1 style={{ fontSize: "15px", fontWeight: "600" }}>{currDate.monthStr}</h1>
+                            <h1 style={{ fontSize: "15px", fontWeight: "700" }}>{currDate.monthStr}</h1>
                         </div>
                     </button>
                 );

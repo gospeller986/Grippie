@@ -1,14 +1,14 @@
 import React from 'react'
 
 interface Props {
-    stagCount : number ;
-    silverCount : number ;
-    increaseStag : () => void ;
-    decreaseStag : () => void ;
-    increaseSilver : () => void ;
-    decreaseSilver : () => void ;
+    stagCount: number;
+    silverCount: number;
+    increaseStag: () => void;
+    decreaseStag: () => void;
+    increaseSilver: () => void;
+    decreaseSilver: () => void;
 }
-const EntryPackages = (props : Props) => {
+const EntryPackages = (props: Props) => {
     return (
         <div>
             <div className='w-full'>
@@ -35,7 +35,8 @@ const EntryPackages = (props : Props) => {
                     <h1 style={{
                         fontSize: '12px',
                         fontWeight: '400',
-                        color: "#535353"
+                        color: "#535353",
+                        fontFamily: 'ProximaNovaR'
                     }}>
                         Admission for one individual only. Cover charge redeemable on food & drinks. Priced at INR 2000
                     </h1>
@@ -65,7 +66,8 @@ const EntryPackages = (props : Props) => {
                     <h1 style={{
                         fontSize: '12px',
                         fontWeight: '400',
-                        color: "#535353"
+                        color: "#535353",
+                        fontFamily: 'ProximaNovaR'
                     }}>
                         Admission for one couple only. Cover charge redeemable
                         on food & drinks. Priced at INR 1500
@@ -90,14 +92,15 @@ const EntryPackages = (props : Props) => {
                     >
                         <button className='text-[18px]' onClick={() => props.decreaseSilver()}>-</button>
                         <h1>{props.silverCount}</h1>
-                        <button className='text-[18px]'  onClick={() => props.increaseSilver()}>+</button>
+                        <button className='text-[18px]' onClick={() => props.increaseSilver()}>+</button>
                     </div>
                 </div>
                 <div className='mt-[19px]'>
                     <h1 style={{
                         fontSize: '12px',
                         fontWeight: '400',
-                        color: "#535353"
+                        color: "#535353",
+                        fontFamily: 'ProximaNovaR'
                     }}>
                         Priority reservations: Up to 10% off dining. Complimentary welcome drink.
                         Personalized recommendations Special occasion perks. Priced at INR 4500

@@ -40,7 +40,7 @@ const AboutEventCard = () => {
         </>
     );
     return (
-        <div className="relative w-full mt-[55px]">
+        <div className="relative w-full mt-[54px]">
             <div
                 className="p-[1px] rounded-2xl overflow-hidden"
                 style={{
