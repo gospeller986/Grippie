@@ -50,8 +50,8 @@ const EventDateList = (props: Props) => {
         <div className="grid grid-cols-5 gap-3">
             {dateList.map((currDate: IDate, index) => {
                 const isSelected = isSameDay(selectedDate, currDate.date);
-                const baseClasses = 'h-[77px] w-[58px] rounded-[14px] flex flex-col items-center justify-center border-2 gap-1 font-[700] p-[12px]';
-                const activeClasses = 'bg-lime-400 text-white border-lime-400 shadow-[1px_1px_7.9px_0px_#C9F57C]';
+                const baseClasses = 'h-[77px] w-[58px] rounded-[14px] flex flex-col items-center justify-center border-[1px] gap-1 font-[700] p-[12px]';
+                const activeClasses = 'bg-[#8AC926] text-white border-[#D5F6A1] shadow-[1px_1px_7.9px_0px_#C9F57C]';
                 const inactiveClasses = 'border-purple-300 text-[#797979]';
 
                 return (
@@ -64,9 +64,9 @@ const EventDateList = (props: Props) => {
                         }}
                     >
                         <div>
-                            <h1 style={{ fontSize: "10px", fontWeight: "600", fontFamily : "ProximaNovaA" , marginBottom : "5px" }}>{currDate.dayStr.toUpperCase()}</h1>
+                            <h1 style={{ fontSize: "10px", fontWeight: "600", fontFamily : "ProximaNovaT" , marginBottom : "5px" , lineHeight : "12px" }}>{currDate.dayStr.toUpperCase()}</h1>
                             <h1 style={{ fontSize: "20px", fontWeight: "700", lineHeight: "16px" }}>{currDate.dateStr}</h1>
-                            <h1 style={{ fontSize: "15px", fontWeight: "700" }}>{currDate.monthStr}</h1>
+                            <h1 style={{ fontSize: "15px", fontWeight: "700" , lineHeight : "12px" , letterSpacing : "-0.5px" }}>{currDate.monthStr}</h1>
                         </div>
                     </button>
                 );

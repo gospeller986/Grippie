@@ -79,7 +79,7 @@ const BookingPage = () => {
                                 borderRadius: "20px"
                             }}
                         >
-                            <div className=" bg-white p-4 rounded-[20px]" style={{ borderRadius: "20px" }}>
+                            <div className=" bg-[#F6F6F6] p-4 rounded-[20px]" style={{ borderRadius: "20px" }}>
 
                                 <div className='md:flex md:w-full md:justify-center md:gap-20 '>
                                     <div>

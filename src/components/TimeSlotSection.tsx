@@ -74,7 +74,7 @@ const TimeSlotSection = () => {
                 key={time}
                 onClick={() => setSelectedTime(time)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedTime === time
-                  ? 'bg-lime-400 text-white border-lime-400 shadow-[1px_1px_7.9px_0px_#C9F57C]'
+                  ? 'bg-[#8AC926] text-white border-[#D5F6A1] shadow-[1px_1px_7.9px_0px_#C9F57C]'
                   : 'text-[#797979] border-[#D9C5FF] border-[1.5px]'
                   }`}
               >
@@ -90,7 +90,7 @@ const TimeSlotSection = () => {
                 key={time}
                 onClick={() => setSelectedTime(time)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedTime === time
-                  ? 'bg-lime-400 text-white border-lime-400 shadow-[1px_1px_7.9px_0px_#C9F57C]'
+                  ? 'bg-[#8AC926] text-white border-[#D5F6A1] shadow-[1px_1px_7.9px_0px_#C9F57C]'
                   : 'text-[#797979] border-[#D9C5FF] border-[1.5px]'
                   }`}
               >
@@ -108,7 +108,7 @@ const TimeSlotSection = () => {
                 key={index}
                 onClick={() => setSelectedHour(item)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedHour?.hour === item?.hour
-                  ? 'bg-lime-400 text-white border-lime-400 shadow-[1px_1px_7.9px_0px_#C9F57C]'
+                  ? 'bg-[#8AC926] text-white border-[#D5F6A1] shadow-[1px_1px_7.9px_0px_#C9F57C]'
                   : 'text-[#797979] border-[#D9C5FF] border-[1.5px]'
                   }`}
               >
@@ -122,7 +122,7 @@ const TimeSlotSection = () => {
                 key={index}
                 onClick={() => setSelectedHour(item)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedHour?.hour === item?.hour
-                  ? 'bg-lime-400 text-white border-lime-400 shadow-[1px_1px_7.9px_0px_#C9F57C]'
+                  ? 'bg-[#8AC926] text-white border-[#D5F6A1] shadow-[1px_1px_7.9px_0px_#C9F57C]'
                   : 'text-[#797979] border-[#D9C5FF] border-[1.5px]'
                   }`}
               >
