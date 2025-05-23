@@ -8,9 +8,9 @@ const EventPageTitleSection = () => {
     }
     return (
         <div className='w-full'>
-            <div className='mt-[28px] px-[28px] w-full items-start'>
+            <div className='mt-[18px] md:mt-[28px] px-[28px] w-full items-start'>
                 <h1
-                    className='w-full text-wrap text-[25px] md:text-[35px]'
+                    className='w-full text-wrap text-[22px] md:text-[35px]'
                     style={{
                         fontFamily: "Prometo",
                         fontWeight: 'bold'
@@ -18,19 +18,19 @@ const EventPageTitleSection = () => {
                     MAJ-R on the deck
                 </h1>
                 <p
-                    className='mt-[13px]'
+                    className='mt-[6px]'
                     style={{
                         color: "#656565",
-                        fontSize: "12px",
+                        fontSize: "11px",
                         fontWeight: '700',
                         fontFamily: "ProximaNovaA",
                         letterSpacing: '6%'
                     }}
-                >SUNDAYS · 7 PM ONWARDS · QUTUB AREA <br />
+                >SUNDAYS · 7 PM ONWARDS · QUTUB AREA 
                     BOLLYWOOD SUFI</p>
             </div>
 
-            <div className='mt-[36px] w-full  px-[28px] '>
+            <div className='mt-[10px] w-full  px-[28px] '>
                 <button
                     onClick={handleRedirectEventBooking}
                     className='w-full h-[60px]'

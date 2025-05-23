@@ -29,16 +29,16 @@ const EventPage = () => {
                     }}
                 >
                     <div className='bg-[#1B1722] h-[339px] md:h-[202px] w-full absolute  ' />
-                    <div className='mt-[72px] z-10'>
+                    <div className='mt-[32px] z-10'>
                         <CompanyLogo />
                     </div>
 
-                    <div className='w-full z-10 md:mt-20 md:px-[80px] xl:px-[120px] md:flex md:flex-row md:gap-[40px]'>
-                        <div className='mt-[40px] w-full md:w-[420px] md:px-0 px-[18px] z-10'>
+                    <div className='w-full z-10 md:mt-30 md:px-[80px] xl:px-[120px] md:flex md:flex-row md:gap-[40px]'>
+                        <div className='mt-[20px] md:mt-[40px] w-full md:w-[420px] md:px-0 px-[18px] z-10'>
                             <Image
                                 src={EventCover}
                                 alt={"Event Image"}
-                                className='w-full md:min-w-[434px]  md:h-[641px] object-cover rounded-[10px]'
+                                className='w-full md:min-w-[434px] h-[380px]  md:h-[641px] object-cover rounded-[10px]'
                             />
                         </div>
                         <div className='w-full md:mt-[32px]'>

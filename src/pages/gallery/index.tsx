@@ -12,6 +12,8 @@ import Cocktail1 from "@/images/Cocktail1.png"
 import Cocktail2 from "@/images/Cocktail2.png"
 import Image from 'next/image';
 import Inner from '@/components/Layout/Inner';
+import { motion, AnimatePresence } from "framer-motion"
+import CommonFooter from '@/components/CommonFooter';
 
 
 const filters = ["Food", "Cocktails", "Ambience"];
@@ -53,6 +55,42 @@ const GalleryPage = () => {
 
     const selectedCategory = galleryData.find(item => item.category === selectedFilter) ?? galleryData[0];
     const [selectedImage, setSelectedImage] = useState(selectedCategory.images[0]);
+    const [currentPage, setCurrentPage] = useState(0); // Index of selected image
+    const [direction, setDirection] = useState<"left" | "right">("right");
+
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset: number, velocity: number) => {
+        return Math.abs(offset) * velocity;
+    };
+
+    const paginate = (newDirection: "left" | "right") => {
+        setDirection(newDirection);
+
+        setCurrentPage((prev) => {
+            const nextIndex = newDirection === "left" ? prev + 1 : prev - 1;
+            if (nextIndex < 0 || nextIndex >= selectedCategory.images.length) return prev;
+
+            setSelectedImage(selectedCategory.images[nextIndex]);
+            return nextIndex;
+        });
+    };
+
+    const slideVariants = {
+        initial: (dir: "left" | "right") => ({
+            x: dir === "left" ? 100 : -100,
+            opacity: 0,
+        }),
+        animate: {
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.5 },
+        },
+        exit: (dir: "left" | "right") => ({
+            x: dir === "left" ? -100 : 100,
+            opacity: 0,
+            transition: { duration: 0.5 },
+        }),
+    };
 
     const handleFilterChange = (filter: string) => {
         setSelectedFilter(filter);
@@ -81,11 +119,11 @@ const GalleryPage = () => {
                         flexDirection: "column",
                         alignItems: "center"
                     }}>
-                    <div className='bg-[#1B1722] h-[290px] w-full absolute  ' />
-                    <div className='mt-[72px] z-10'>
+                    <div className='bg-[#1B1722] h-[206px] w-full absolute  ' />
+                    <div className='mt-[32px] z-10'>
                         <CompanyLogo />
                     </div>
-                    <div className='flex flex-row items-center overflow-x-auto w-full md:w-[420px] gap-3 pl-7 mt-[56px] justify-center z-10'>
+                    <div className='flex flex-row items-center overflow-x-auto w-full md:w-[420px] gap-3 py-1 pl-7 mt-[48px] justify-center z-10'>
                         <button
                             onClick={() => handleBack()}
                             className="bg-[#8A54F0] text-white rounded-[15px] p-3">
@@ -105,9 +143,9 @@ const GalleryPage = () => {
                                 {filters.map((filter, i) => (
                                     <button
                                         key={i}
-                                        className={`px-4 py-2 rounded-[15px] font-[600] whitespace-nowrap border transition-all ${selectedFilter === filter ? "bg-[#231D32] text-white border-[#8A54F0]" : "text-white border-[#A362FF]"
+                                        className={`px-4 py-2 rounded-[15px] font-[600] whitespace-nowrap border transition-all ${selectedFilter === filter ? "bg-[#2F1B55] text-white border-[#8A54F0]" : "text-white border-[#A362FF]"
                                             }`}
-                                        onClick={() => setSelectedFilter(filter)}
+                                        onClick={() => handleFilterChange(filter)}
                                     >
                                         {filter}
                                     </button>
@@ -116,12 +154,34 @@ const GalleryPage = () => {
                         </div>
                     </div>
 
-                    <div className="w-full md:w-[420px] h-[442px] flex justify-center mt-6 z-10">
-                        <Image
-                            src={selectedImage.src}
-                            alt={selectedImage.alt}
-                            className="w-full object-cover"
-                        />
+                    <div className="relative w-full md:w-[420px] h-[442px] flex justify-center mt-6 z-10">
+                        <AnimatePresence custom={direction} mode="wait">
+                            <motion.div
+                                key={selectedImage.alt} // Unique key to trigger animation
+                                custom={direction}
+                                variants={slideVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                onDragEnd={(e, { offset, velocity }) => {
+                                    const swipe = swipePower(offset.x, velocity.x);
+                                    if (swipe < -swipeConfidenceThreshold) {
+                                        paginate("left");
+                                    } else if (swipe > swipeConfidenceThreshold) {
+                                        paginate("right");
+                                    }
+                                }}
+                                className="absolute w-full h-[442px]"
+                            >
+                                <Image
+                                    src={selectedImage.src}
+                                    alt={selectedImage.alt}
+                                    className="w-full h-[442px]  object-cover"
+                                />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
                     <div className="flex gap-3 overflow-x-auto px-6 mt-6 w-full md:w-[420px] pb-4 sm:scrollbar-hide md:scrollbar-show">
@@ -151,6 +211,9 @@ const GalleryPage = () => {
                         >
                             Request Reservation
                         </button>
+                    </div>
+                     <div className='mt-[42px] w-full md:flex justify-center relative '>
+                        <CommonFooter />
                     </div>
                 </div>
             </div>

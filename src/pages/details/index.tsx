@@ -1,3 +1,4 @@
+import CommonFooter from '@/components/CommonFooter'
 import CompanyLogo from '@/components/CompanyLogo'
 import ConfirmDetailsButton from '@/components/ConfirmDetailsButton'
 import GuestDetailsCard from '@/components/GuestDetailsCard'
@@ -14,7 +15,7 @@ interface IUserDetails {
 const DetailsPage = () => {
     const router = useRouter()
     const [userDetails, setUserDetails] = useState<IUserDetails | null>(null);
-    const [websiteMode,setWebsiteMode] = useState( 0)
+    const [websiteMode, setWebsiteMode] = useState(0)
     const onClickHandler = () => {
         router.push("/confirmation")
     }
@@ -30,7 +31,7 @@ const DetailsPage = () => {
                 setUserDetails(null);
             }
         }
-        if(currWebsiteMode){
+        if (currWebsiteMode) {
             setWebsiteMode(Number(localStorage.getItem("websiteMode")));
         }
     }, []);
@@ -44,7 +45,7 @@ const DetailsPage = () => {
                         alignItems: "center"
                     }}>
                     <div className='bg-[#1B1722] h-[278px] w-full absolute  ' />
-                    <div className='mt-[72px] z-10'>
+                    <div className='mt-[32px] z-10'>
                         <CompanyLogo />
                     </div>
 
@@ -60,11 +61,15 @@ const DetailsPage = () => {
                     <div className='mt-[35px] w-full md:w-[420px] px-[18px] z-10'>
                         <RestaurantDetailsCard websiteMode={websiteMode} />
                         <div className='mt-[14px]'>
-                            <GuestDetailsCard userDetails={userDetails}  />
+                            <GuestDetailsCard userDetails={userDetails} />
                         </div>
                         <div className='mt-[35px] mb-[40px]'>
                             <ConfirmDetailsButton onClickHandler={onClickHandler} />
                         </div>
+                    </div>
+
+                    <div className='mt-[42px] w-full md:flex justify-center relative '>
+                        <CommonFooter />
                     </div>
 
 

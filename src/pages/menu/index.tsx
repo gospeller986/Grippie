@@ -8,6 +8,7 @@ import EventCover from "@/images/EventCover.jpg"
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Inner from '@/components/Layout/Inner';
+import CommonFooter from '@/components/CommonFooter';
 
 const filters = ["Food Menu", "Bar Menu", "Specials", "Cocktails"];
 
@@ -113,7 +114,7 @@ const MenuPage = () => {
 
     useEffect(() => {
         console.log(filteredMenus[currentIndex]?.image)
-    }, [filteredMenus , currentIndex])
+    }, [filteredMenus, currentIndex])
 
     return (
         <Inner>
@@ -132,11 +133,11 @@ const MenuPage = () => {
                     }}>
 
                     <div className='bg-[#1B1722] h-[290px] w-full absolute  ' />
-                    <div className='mt-[72px] z-10'>
+                    <div className='mt-[32px] z-10'>
                         <CompanyLogo />
                     </div>
 
-                    <div className='flex flex-row items-center overflow-x-auto w-full md:w-[420px] gap-3 pl-7 md:pl-0 mt-[56px] justify-center z-10'>
+                    <div className='flex flex-row items-center overflow-x-auto w-full md:w-[420px] gap-3 py-1 pl-7 md:pl-0 mt-[48px] justify-center z-10'>
                         <button
                             onClick={() => handleBack()}
                             className="bg-[#8A54F0] text-white rounded-[15px] p-3">
@@ -156,7 +157,7 @@ const MenuPage = () => {
                                 {filters.map((filter, i) => (
                                     <button
                                         key={i}
-                                        className={`px-4 py-2 rounded-[15px] font-[600] whitespace-nowrap border transition-all ${selectedFilter === filter ? "bg-[#231D32] text-white border-[#8A54F0]" : "text-white border-[#A362FF]"
+                                        className={`px-4 py-2 rounded-[15px] font-[600] whitespace-nowrap border transition-all ${selectedFilter === filter ? "bg-[#2F1B55] text-white border-[#8A54F0]" : "text-white border-[#A362FF]"
                                             }`}
                                         onClick={() => setSelectedFilter(filter)}
                                     >
@@ -206,6 +207,10 @@ const MenuPage = () => {
                         >
                             Request Reservation
                         </button>
+                    </div>
+
+                    <div className='mt-[42px] w-full md:flex justify-center relative '>
+                        <CommonFooter />
                     </div>
 
                 </div>

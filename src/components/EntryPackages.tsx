@@ -7,6 +7,8 @@ interface Props {
     decreaseStag: () => void;
     increaseSilver: () => void;
     decreaseSilver: () => void;
+    coupleEntry : boolean ;
+    setCoupleEntry : React.Dispatch<React.SetStateAction<boolean>>;
 }
 const EntryPackages = (props: Props) => {
     return (
@@ -50,17 +52,18 @@ const EntryPackages = (props: Props) => {
                         fontWeight: '700',
                         color: "#535353"
                     }}>Couple Entry</h1>
-                    <div className='flex flex-row w-[97px] text-white justify-between rounded-[14px] px-[6px]'
+                    <button className='flex flex-row w-[97px] text-white justify-between rounded-[14px] px-[6px]'
+                        onClick={() => props.setCoupleEntry?.((prev : any) => !prev)}
                         style={{
-                            background: "#DDE2FF",
+                            background: props?.coupleEntry ? "linear-gradient(79.47deg, #6239C9 -17.78%, #3855FF 76.08%)" : "#DDE2FF",
                             border: "1.5px solid #CAD6FF",
                             height: '32px',
                             alignItems: "center",
                             justifyContent: "center"
                         }}
                     >
-                        <h1 className='text-[#5B5ED4]'>Add</h1>
-                    </div>
+                        <h1 className={` ${props?.coupleEntry ? "text-white" : "text-[#5B5ED4]" } `}>{props?.coupleEntry ? "Added" : "Add"}</h1>
+                    </button>
                 </div>
                 <div className='mt-[19px]'>
                     <h1 style={{

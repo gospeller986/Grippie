@@ -1,3 +1,4 @@
+import CommonFooter from '@/components/CommonFooter'
 import CompanyLogo from '@/components/CompanyLogo'
 import EntryPackages from '@/components/EntryPackages'
 import EventDateList from '@/components/EventDateList'
@@ -10,7 +11,8 @@ const EventBookingPage = () => {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
     const [stagCount, setStagCount] = useState(0);
     const [silverCount, setSilverCount] = useState(0);
-    const [referralCode , setRefferalCode] = useState("");
+    const [referralCode, setRefferalCode] = useState("");
+    const [coupleEntry, setCoupleEntry] = useState(false);
 
     const increaseStag = () => {
         setStagCount(prev => prev + 1);
@@ -99,6 +101,8 @@ const EventBookingPage = () => {
                                             increaseStag={increaseStag}
                                             decreaseStag={decreaseStag}
                                             decreaseSilver={decreaseSilver}
+                                            coupleEntry={coupleEntry}
+                                            setCoupleEntry={setCoupleEntry}
 
                                         />
                                     </div>
@@ -115,9 +119,9 @@ const EventBookingPage = () => {
                                             <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[21px] ' />
 
                                             <EventDateList
-                                            selectedDate={selectedDate}
-                                            setSelectedDate={setSelectedDate}
-                                            nextNumberOfDays={4}
+                                                selectedDate={selectedDate}
+                                                setSelectedDate={setSelectedDate}
+                                                nextNumberOfDays={4}
                                             />
 
                                         </div>
@@ -156,7 +160,7 @@ const EventBookingPage = () => {
                                                 </div>
                                                 <input
                                                     value={referralCode}
-                                                    onChange={(e:any) => setRefferalCode(e.target.value)}
+                                                    onChange={(e: any) => setRefferalCode(e.target.value)}
                                                     type="text"
                                                     placeholder="Enter Code"
                                                     className="w-full px-3 outline-none placeholder:italic placeholder:text-[12px] placeholder:leading-[13px] placeholder:font-[400] focus:ring-0 focus:outline-none placeholder:[font-family:'ProximaNovaA']"
@@ -196,6 +200,9 @@ const EventBookingPage = () => {
                             }}>
                             Confirm Details
                         </button>
+                    </div>
+                    <div className='mt-[42px] w-full md:flex justify-center relative '>
+                        <CommonFooter />
                     </div>
                 </div>
             </div>

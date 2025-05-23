@@ -129,6 +129,7 @@ const AboutGallery = () => {
             </span>
         </>
     );
+    
     return (
         <div className='w-full '>
             <div className='w-full md:flex md:flex-row md:items-center md:gap-[50px] xl:gap-[50px] 2xl:gap-[80px]  md:h-fit relative'
@@ -180,7 +181,7 @@ const AboutGallery = () => {
                         }}>About Play Qutub</h1>
                     </div>
                     <div
-                        className="mt-[16px] px-[4px] text-[12px] text-[#FAFAFA] md:text-[#3A3A3A] relative"
+                        className="mt-[16px] px-[4px] text-[11px] text-[#FAFAFA] md:text-[#3A3A3A] relative"
                         style={{
                             fontFamily: "ProximaNovaR",
                             zIndex: 10,
@@ -192,7 +193,7 @@ const AboutGallery = () => {
                     <div className='bg-[#FAFAFA] md:bg-[#3A3A3A] mt-[27px] h-[1px] opacity-[48%]  ' />
 
                     <div className='mt-[27px] pb-[72px] md:pb-0 z-10 relative'>
-                        <p className='text-[#FAFAFA] md:text-[#3A3A3A] text-[12px] z-10' style={{ letterSpacing: "1px" }} >NEIGHBORHOOD GEM  <span className='text-[#FA8527] px-[5px]'>  ·  </span>    EXCELLENT FOOD   <span className='text-[#FA8527] px-[5px]'>  ·  </span> <br />
+                        <p className='text-[#FAFAFA] md:text-[#3A3A3A] text-[11px] z-10' style={{ letterSpacing: "1px" }} >NEIGHBORHOOD GEM  <span className='text-[#FA8527] px-[5px]'>  ·  </span>    EXCELLENT FOOD   <span className='text-[#FA8527] px-[5px]'>  ·  </span> <br />
                             COCKTAIL BAR   <span className='text-[#FA8527] px-[5px]'>  ·  </span>   GREAT FOR OUTDOOR DINING</p>
                     </div>
 

@@ -6,6 +6,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+       screens: {
+        'xs': '370px',
+      },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },

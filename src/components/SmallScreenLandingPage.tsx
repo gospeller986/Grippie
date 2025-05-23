@@ -129,7 +129,7 @@ export const SmallScreenLandingPage = () => {
                     }}
                 >
                     <div className='bg-[#1B1722] h-[235px] w-full absolute  ' />
-                    <div className='mt-[72px] z-10'>
+                    <div className='mt-[32px] z-10'>
                         <CompanyLogo />
                     </div>
 
@@ -141,16 +141,16 @@ export const SmallScreenLandingPage = () => {
                     </div>
 
                     {websiteMode === 0 &&
-                        <div className='mt-[62px] w-full  px-[18px] md:px-[48px] -space-y-14 z-10 '>
+                        <div className='mt-[32px] w-full  px-[18px] md:px-[48px] -space-y-14 z-10 '>
                             <Image
                                 src={RestaurantImage}
                                 alt={"Event Image"}
-                                className='w-full h-[427px] md:h-[573px] object-cover rounded-[10px]'
+                                className='w-full h-[380px] md:h-[573px] object-cover rounded-[10px]'
                             />
                         </div>}
 
                     {websiteMode === 0 &&
-                        <div className='w-full md:w-[520px] px-[18px] mt-[62px] md:mb-10'>
+                        <div className='w-full md:w-[520px] px-[18px] mt-[42px] md:mb-10'>
                             <RestaurantDetailsSection />
                             <GuestAmount
                                 guests={guests}

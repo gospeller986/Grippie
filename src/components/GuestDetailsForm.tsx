@@ -56,7 +56,7 @@ const GuestDetailsForm = (props: Props) => {
                             borderBottomLeftRadius: 12
                         }}
                     >
-                        <h1 style={{ color: "#5B5ED4", fontSize: "15px", fontWeight: '700' }}>Name</h1>
+                        <h1 style={{ color: "#5B5ED4", fontSize: "14px", fontWeight: '700' }}>Name</h1>
                     </div>
                     <input
                         type="text"
@@ -95,9 +95,9 @@ const GuestDetailsForm = (props: Props) => {
                             borderBottomLeftRadius: 12
                         }}
                     >
-                        <h1 style={{ color: "#5B5ED4", fontSize: "15px", fontWeight: '700' }}>Phone </h1>
+                        <h1 style={{ color: "#5B5ED4", fontSize: "14px", fontWeight: '700' }}>Phone </h1>
                         <span style={{ color: "#CAD6FF" }}> | </span>
-                        <select style={{ color: "#5B5ED4", fontSize: "15px", fontWeight: '700' }} >
+                        <select style={{ color: "#5B5ED4", fontSize: "14px", fontWeight: '700' }} >
                             <option value="+91">+91</option>
                             <option value="+92">+92</option>
                             <option value="+93">+93</option>

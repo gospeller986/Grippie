@@ -1,18 +1,65 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const EventsFooter = () => {
+        const x = useMotionValue(0);
+        const y = useMotionValue(0);
+    
+        const smoothX = useSpring(x, { stiffness: 100, damping: 20 });
+        const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
+    
+        const svgRef = useRef<HTMLDivElement>(null);
+    
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!svgRef.current) return;
+            const rect = svgRef.current.getBoundingClientRect();
+            const offsetX = (e.clientX - rect.left - rect.width / 2) / 20;
+            const offsetY = (e.clientY - rect.top - rect.height / 2) / 20;
+            x.set(offsetX);
+            y.set(offsetY);
+        };
+    
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!svgRef.current) return;
+            const touch = e.touches[0]; // Get the first touch point
+            const rect = svgRef.current.getBoundingClientRect();
+            const offsetX = (touch.clientX - rect.left - rect.width / 2) / 20;
+            const offsetY = (touch.clientY - rect.top - rect.height / 2) / 20;
+            x.set(offsetX);
+            y.set(offsetY);
+        };
+    
+        useEffect(() => {
+            // Add event listeners for mouse and touch events
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    
+            // Cleanup event listeners on unmount
+            return () => {
+                window.removeEventListener('mousemove', handleMouseMove);
+                window.removeEventListener('touchmove', handleTouchMove);
+            };
+        }, [x, y]);
     return (
         <div className='w-full h-[394px] md:h-[247px] absolute bottom-0 flex justify-center'
         >
             <div className='w-full h-[270px]  bg-[#1B1722] absolute bottom-0' />
-            <svg className='absolute bottom-0 w-full' width="402" height="194" viewBox="0 0 402 194" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <motion.svg 
+                                style={{ x: smoothX, y: smoothY }}
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                    }}
+            className='absolute bottom-0 w-full' width="402" height="194" viewBox="0 0 402 194" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M324.705 141.57C323.247 141.828 322.329 142.288 321.951 142.951C321.572 143.616 321.536 144.549 321.841 145.754C322.161 147.02 322.653 147.884 323.317 148.348C323.98 148.811 325.042 148.914 326.5 148.657C327.93 148.404 328.837 147.953 329.22 147.306C329.601 146.658 329.633 145.701 329.312 144.435C329.007 143.23 328.52 142.39 327.854 141.91C327.186 141.43 326.137 141.318 324.705 141.57Z" fill="white" />
                 <path d="M288.323 26.6876C285.793 25.8355 283.904 25.7695 282.656 26.4897C281.404 27.2132 280.421 28.6555 279.7 30.8213C278.942 33.0981 278.852 34.888 279.427 36.1946C280 37.4984 281.554 38.5781 284.084 39.4322C286.565 40.2685 288.427 40.3403 289.667 39.6488C290.905 38.9547 291.905 37.471 292.662 35.1935C293.383 33.0278 293.458 31.2799 292.895 29.946C292.33 28.6114 290.806 27.5266 288.323 26.6876Z" fill="#8AC926" />
                 <path d="M401.536 72.3394C399.197 71.8921 397.519 72.0622 396.503 72.8495C395.485 73.6403 394.79 75.034 394.415 77.0354C394.02 79.1395 394.156 80.7325 394.822 81.8178C395.487 82.9009 396.99 83.6674 399.33 84.1165C401.624 84.5558 403.279 84.3941 404.291 83.6331C405.302 82.8699 406.006 81.4376 406.4 79.3331C406.775 77.3317 406.63 75.7777 405.971 74.6667C405.311 73.5554 403.832 72.7808 401.536 72.3394Z" fill="#FA8527" />
                 <path d="M0.325314 116.302C-2.01438 115.855 -3.69222 116.025 -4.7082 116.812C-5.72656 117.603 -6.42121 118.997 -6.79651 120.998C-7.19162 123.102 -7.05502 124.695 -6.38908 125.781C-5.72435 126.864 -4.22073 127.63 -1.88143 128.079C0.413122 128.519 2.06746 128.357 3.07959 127.596C4.09052 126.833 4.79494 125.4 5.18845 123.296C5.56375 121.295 5.41897 119.741 4.76008 118.63C4.09959 117.518 2.62107 116.744 0.325314 116.302Z" fill="#F94B57" />
                 <path d="M75.4868 64.8853C74.1129 65.2636 73.2363 65.7985 72.8569 66.4902C72.4769 67.1843 72.4066 68.1167 72.6448 69.2913C72.895 70.5263 73.3218 71.3461 73.9247 71.7532C74.5265 72.1594 75.5154 72.1737 76.8894 71.7965C78.2369 71.4259 79.1025 70.9017 79.4857 70.2252C79.8678 69.5479 79.9348 68.5921 79.6837 67.3573C79.4455 66.1827 79.0229 65.3861 78.4181 64.9633C77.8123 64.5408 76.8354 64.5156 75.4868 64.8853Z" fill="#9A71E5" />
                 <path d="M143.487 164.885C142.113 165.264 141.236 165.799 140.857 166.49C140.477 167.184 140.407 168.117 140.645 169.291C140.895 170.526 141.322 171.346 141.925 171.753C142.527 172.159 143.515 172.174 144.889 171.797C146.237 171.426 147.103 170.902 147.486 170.225C147.868 169.548 147.935 168.592 147.684 167.357C147.445 166.183 147.023 165.386 146.418 164.963C145.812 164.541 144.835 164.516 143.487 164.885Z" fill="#8AC926" />
-            </svg>
+            </motion.svg>
 
             <div className='absolute bottom-15 flex flex-row gap-2 items-center'>
                 <h1 className='text-[10px] font-[600] text-[#C9C9C9] mt-1'

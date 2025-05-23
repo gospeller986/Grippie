@@ -22,7 +22,7 @@ const WebsiteModeButtons = (props: Props) => {
         gap: 4
     }
     return (
-        <div className={`w-full md:w-[520px] px-[44px] transition-all duration-500 ease-in-out z-20  ${websiteMode === 1 ? 'md:top-[155px] top-[155px]' : 'md:top-[726px] top-[578px]'}`}
+        <div className={`w-full md:w-[520px] px-[44px] transition-all duration-500 ease-in-out z-20  ${websiteMode === 1 ? 'md:top-[155px] top-[115px]' : 'md:top-[726px] top-[460px]'}`}
          style={{ zIndex: 10, display: "flex", position: 'absolute' }}>
             <button
                 className={`w-full hover:shadow-md ${websiteMode === 0 ? "shadow-2xl backdrop-blur-xl -mr-2 z-20" : ""}`}
