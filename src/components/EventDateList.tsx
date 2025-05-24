@@ -22,12 +22,11 @@ interface Props {
 
 }
 
-const generateNextNDates = (n: number): IDate[] => {
-    const today = new Date();
+const generateNextNDates = (startDate: Date, n: number): IDate[] => {
     const dates: IDate[] = [];
     for (let i = 0; i < n; i++) {
-        const d = new Date(today);
-        d.setDate(today.getDate() + i);
+        const d = new Date(startDate);
+        d.setDate(startDate.getDate() + i);
         dates.push({
             date: d,
             dayStr: d.toLocaleDateString("en-US", { weekday: "short" }),
@@ -42,10 +41,20 @@ const generateNextNDates = (n: number): IDate[] => {
 const EventDateList = (props: Props) => {
 
     const { selectedDate, setSelectedDate } = props;
-    const dateList = generateNextNDates(props.nextNumberOfDays ?? 9);
+    // const dateList = generateNextNDates(props.nextNumberOfDays ?? 9);
+    const [startDate, setStartDate] = useState<Date>(selectedDate ?? new Date());
+    
+    const dateList = generateNextNDates(startDate, props.nextNumberOfDays ?? 9);
 
     const isSameDay = (d1: Date | undefined, d2: Date) =>
         d1?.toDateString() === d2.toDateString();
+
+    const handleCalendarSelect = (date: Date | undefined) => {
+        if (date) {
+            setSelectedDate(date);
+            setStartDate(date); // Update starting point for the list
+        }
+    };
     return (
         <div className="grid grid-cols-5 gap-3">
             {dateList.map((currDate: IDate, index) => {
@@ -64,9 +73,9 @@ const EventDateList = (props: Props) => {
                         }}
                     >
                         <div>
-                            <h1 style={{ fontSize: "10px", fontWeight: "600", fontFamily : "ProximaNovaT" , marginBottom : "5px" , lineHeight : "12px" }}>{currDate.dayStr.toUpperCase()}</h1>
+                            <h1 style={{ fontSize: "10px", fontWeight: "600", fontFamily: "ProximaNovaT", marginBottom: "5px", lineHeight: "12px" }}>{currDate.dayStr.toUpperCase()}</h1>
                             <h1 style={{ fontSize: "20px", fontWeight: "700", lineHeight: "16px" }}>{currDate.dateStr}</h1>
-                            <h1 style={{ fontSize: "15px", fontWeight: "700" , lineHeight : "12px" , letterSpacing : "-0.5px" }}>{currDate.monthStr}</h1>
+                            <h1 style={{ fontSize: "15px", fontWeight: "700", lineHeight: "12px", letterSpacing: "-0.5px" }}>{currDate.monthStr}</h1>
                         </div>
                     </button>
                 );
@@ -95,7 +104,7 @@ const EventDateList = (props: Props) => {
                     <Calendar
                         mode="single"
                         selected={selectedDate}
-                        onSelect={setSelectedDate}
+                        onSelect={handleCalendarSelect}
                         disabled={(date) => {
                             const today = new Date();
                             today.setHours(0, 0, 0, 0);
