@@ -41,7 +41,7 @@ const CommonFooter = () => {
         };
     }, [x, y]);
     return (
-        <div ref={svgRef} className='w-full h-[270px] flex justify-center relative'
+        <div className='w-full h-[270px] flex justify-center relative'
         >
             <div className='w-full h-[230px] md:h-[270px]  bg-[#1B1722] absolute bottom-0' />
                 <motion.svg
