@@ -25,7 +25,7 @@ const offers = [
     },
     {
         title: 'UNLIMITED DINNER',
-        subtitle: 'Valid Thu & Sat · from 5PM - 12 AM',
+        subtitle: 'Valid Thu & Sat · from 5PM - 12 AM ',
         tag: 'INSTANT OFFER',
     },
     {
@@ -98,33 +98,33 @@ const OfferSlider = () => {
             transition: { duration: 0.8 },
         }),
     };
-//      const slideVariants = {
-//     initial: (dir: "left" | "right") => ({
-//       x: dir === "left" ? 80 : -80,
-//       opacity: 0,
-//       scale: 0.98,
-//     }),
-//     animate: {
-//       x: 0,
-//       opacity: 1,
-//       scale: 1,
-//       transition: {
-//         type: "spring",
-//         stiffness: 300,
-//         damping: 30,
-//       },
-//     },
-//     exit: (dir: "left" | "right") => ({
-//       x: dir === "left" ? -80 : 80,
-//       opacity: 0,
-//       scale: 0.98,
-//       transition: {
-//         type: "spring",
-//         stiffness: 200,
-//         damping: 25,
-//       },
-//     }),
-//   };
+    //      const slideVariants = {
+    //     initial: (dir: "left" | "right") => ({
+    //       x: dir === "left" ? 80 : -80,
+    //       opacity: 0,
+    //       scale: 0.98,
+    //     }),
+    //     animate: {
+    //       x: 0,
+    //       opacity: 1,
+    //       scale: 1,
+    //       transition: {
+    //         type: "spring",
+    //         stiffness: 300,
+    //         damping: 30,
+    //       },
+    //     },
+    //     exit: (dir: "left" | "right") => ({
+    //       x: dir === "left" ? -80 : 80,
+    //       opacity: 0,
+    //       scale: 0.98,
+    //       transition: {
+    //         type: "spring",
+    //         stiffness: 200,
+    //         damping: 25,
+    //       },
+    //     }),
+    //   };
     return (
         <div className="relative w-full  mt-[44px]">
 
@@ -214,25 +214,32 @@ const OfferSlider = () => {
                                                     }}
                                                 >
                                                     <div className="w-full h-full bg-[#FAFAFA] rounded-tr-[10px] rounded-br-[10px]">
-                                                        <div className='pt-[9px] px-[20px]'>
-                                                            <p className='text-[#8A54F0] text-[10px]'
+                                                        <div className='max-w-[215px] pt-[9px] px-[20px]'>
+                                                            <p className='text-[#8A54F0] text-[10px] truncate whitespace-nowrap overflow-hidden'
                                                                 style={{
                                                                     fontWeight: 700,
-                                                                    letterSpacing: "0.9px"
+                                                                    letterSpacing: "0.9px",
+                                                                    textOverflow: "ellipsis"
                                                                 }}
                                                             >{offer?.tag}</p>
-                                                            <h1 style={{
-                                                                fontFamily: 'Prometo',
-                                                                fontSize: '20px',
-                                                                fontWeight: 700,
-                                                                color: "#373737"
-                                                            }}>{offer?.title}</h1>
-                                                            <p style={{
-                                                                fontFamily: 'ProximaNovaA',
-                                                                fontSize: '12px',
-                                                                fontWeight: 600,
-                                                                color: "#6F6F6F"
-                                                            }}>{offer?.subtitle}</p>
+                                                            <h1
+                                                                className='truncate whitespace-nowrap overflow-hidden'
+                                                                style={{
+                                                                    fontFamily: 'Prometo',
+                                                                    fontSize: '18px',
+                                                                    fontWeight: 700,
+                                                                    color: "#373737",
+                                                                    textOverflow: "ellipsis"
+                                                                }}>{offer?.title}</h1>
+                                                            <p
+                                                                className='truncate whitespace-nowrap overflow-hidden'
+                                                                style={{
+                                                                    fontFamily: 'ProximaNovaA',
+                                                                    fontSize: '11px',
+                                                                    fontWeight: 600,
+                                                                    color: "#6F6F6F",
+                                                                    textOverflow: "ellipsis"
+                                                                }}>{offer?.subtitle}</p>
                                                         </div>
 
                                                     </div>
