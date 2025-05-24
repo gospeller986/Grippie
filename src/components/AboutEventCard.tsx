@@ -53,7 +53,6 @@ const AboutEventCard = () => {
                     className="bg-white p-[24px] rounded-2xl"
                     style={{ borderRadius: "20px",
                         background: "radial-gradient(140.65% 140.65% at 17.4% 5.37%, #FAFAFA 0%, #FAFAFA 49.5%, #F2EDFC 100%)"
-
                      }}
                 >
                     <div className="flex flex-row items-center gap-2">

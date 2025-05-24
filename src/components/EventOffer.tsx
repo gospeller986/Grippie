@@ -147,7 +147,7 @@ const EventOffer = () => {
                                             fontSize: '12px',
                                             fontWeight: 600,
                                             color: "#6F6F6F",
-                                                                                        textOverflow: "ellipsis"
+                                            textOverflow: "ellipsis"
                                         }}>Valid Thu & Sat  </p>
                                     </div>
 
