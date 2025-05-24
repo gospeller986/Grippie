@@ -1,17 +1,64 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const PoweredBySection = () => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const smoothX = useSpring(x, { stiffness: 100, damping: 20 });
+    const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
+
+    const svgRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: MouseEvent) => {
+        if (!svgRef.current) return;
+        const rect = svgRef.current.getBoundingClientRect();
+        const offsetX = (e.clientX - rect.left - rect.width / 2) / 20;
+        const offsetY = (e.clientY - rect.top - rect.height / 2) / 20;
+        x.set(offsetX);
+        y.set(offsetY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        if (!svgRef.current) return;
+        const touch = e.touches[0]; // Get the first touch point
+        const rect = svgRef.current.getBoundingClientRect();
+        const offsetX = (touch.clientX - rect.left - rect.width / 2) / 20;
+        const offsetY = (touch.clientY - rect.top - rect.height / 2) / 20;
+        x.set(offsetX);
+        y.set(offsetY);
+    };
+
+    useEffect(() => {
+        // Add event listeners for mouse and touch events
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+        // Cleanup event listeners on unmount
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleTouchMove);
+        };
+    }, [x, y]);
     return (
         <>
             <div className='w-full relative'>
-                <svg width="100%" height="171" viewBox="0 0 402 171" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                <motion.svg
+                    style={{ x: smoothX, y: smoothY }}
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                    }}
+                    width="100%" height="171" viewBox="0 0 402 171" fill="none" xmlns="http://www.w3.org/2000/svg" >
                     <path d="M324.705 141.57C323.247 141.828 322.329 142.288 321.951 142.951C321.572 143.616 321.536 144.549 321.841 145.754C322.161 147.02 322.653 147.884 323.317 148.348C323.98 148.811 325.041 148.914 326.5 148.657C327.93 148.404 328.837 147.953 329.22 147.306C329.601 146.658 329.633 145.701 329.312 144.435C329.007 143.23 328.52 142.39 327.854 141.91C327.186 141.43 326.137 141.318 324.705 141.57Z" fill="white" />
                     <path d="M288.323 26.6876C285.793 25.8355 283.903 25.7695 282.655 26.4897C281.404 27.2132 280.421 28.6555 279.7 30.8213C278.942 33.0981 278.852 34.888 279.426 36.1946C280 37.4984 281.554 38.5781 284.084 39.4322C286.565 40.2685 288.427 40.3403 289.667 39.6488C290.905 38.9547 291.905 37.471 292.662 35.1935C293.383 33.0278 293.458 31.2799 292.895 29.946C292.33 28.6114 290.806 27.5266 288.323 26.6876Z" fill="#8AC926" />
                     <path d="M401.536 72.3394C399.197 71.8921 397.519 72.0622 396.503 72.8495C395.484 73.6403 394.79 75.034 394.414 77.0354C394.019 79.1395 394.156 80.7325 394.822 81.8178C395.487 82.9009 396.99 83.6674 399.33 84.1165C401.624 84.5558 403.278 84.3941 404.291 83.6331C405.302 82.8699 406.006 81.4376 406.399 79.3331C406.775 77.3317 406.63 75.7777 405.971 74.6667C405.311 73.5554 403.832 72.7808 401.536 72.3394Z" fill="#FA8527" />
                     <path d="M0.325192 116.302C-2.0145 115.855 -3.69234 116.025 -4.70832 116.812C-5.72669 117.603 -6.42134 118.997 -6.79664 120.998C-7.19175 123.102 -7.05514 124.695 -6.3892 125.781C-5.72447 126.864 -4.22085 127.63 -1.88155 128.079C0.413 128.519 2.06733 128.357 3.07947 127.596C4.0904 126.833 4.79482 125.4 5.18833 123.296C5.56363 121.295 5.41885 119.741 4.75996 118.63C4.09946 117.518 2.62095 116.744 0.325192 116.302Z" fill="#F94B57" />
                     <path d="M75.4866 64.8843C74.1128 65.2626 73.2362 65.7975 72.8567 66.4892C72.4768 67.1833 72.4065 68.1157 72.6447 69.2903C72.8948 70.5253 73.3217 71.3451 73.9246 71.7522C74.5264 72.1584 75.5153 72.1727 76.8893 71.7955C78.2367 71.4249 79.1024 70.9007 79.4856 70.2242C79.8676 69.5469 79.9346 68.5911 79.6836 67.3563C79.4454 66.1818 79.0227 65.3851 78.4179 64.9624C77.8122 64.5398 76.8352 64.5146 75.4866 64.8843Z" fill="#9A71E5" />
                     <path d="M143.487 164.884C142.113 165.263 141.236 165.798 140.857 166.489C140.477 167.183 140.407 168.116 140.645 169.29C140.895 170.525 141.322 171.345 141.925 171.752C142.526 172.158 143.515 172.173 144.889 171.796C146.237 171.425 147.102 170.901 147.486 170.224C147.868 169.547 147.935 168.591 147.684 167.356C147.445 166.182 147.023 165.385 146.418 164.962C145.812 164.54 144.835 164.515 143.487 164.884Z" fill="#8AC926" />
-                </svg>
+                </motion.svg>
 
                 <div className='absolute bottom-15 w-full flex flex-row items-center gap-4 justify-center'>
                     <h1 className='text-white text-center mt-0.5 text-[10px] tracking-wide' style={{ letterSpacing: "2.4px" }}>POWERED BY</h1>

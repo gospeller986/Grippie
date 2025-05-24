@@ -132,7 +132,7 @@ const AllEventsPage = () => {
                     </div>
 
                     {isOpen && (
-                        <div className='absolute top-32 z-50 flex flex-col w-full ' style={{
+                        <div className='absolute top-32 z-50 flex flex-col w-full md:max-w-[650px]' style={{
                             border : '0px !important'
                         }}>
                             <div className='w-full bg-[#1B1722] pt-[18px] px-[20px] pb-[18px] flex items-center justify-between'>
