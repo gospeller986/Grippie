@@ -72,7 +72,7 @@ const EventOffer = () => {
                                 }}
                             >
                                 <div className="w-full h-full bg-[#FAFAFA] rounded-tr-[10px] rounded-br-[10px]">
-                                    <div className='pt-[18px] px-[20px]'>
+                                    <div className='py-[16px] px-[20px]'>
                                         <h1 style={{
                                             fontFamily: 'Prometo',
                                             fontSize: '20px',
@@ -134,7 +134,7 @@ const EventOffer = () => {
                                 }}
                             >
                                 <div className="w-full h-full bg-[#FAFAFA] rounded-tr-[10px] rounded-br-[10px]">
-                                    <div className='pt-[18px] px-[20px] truncate whitespace-nowrap overflow-hidden'>
+                                    <div className='py-[16px] px-[20px] truncate whitespace-nowrap overflow-hidden'>
                                         <h1 style={{
                                             fontFamily: 'Prometo',
                                             fontSize: '20px',
