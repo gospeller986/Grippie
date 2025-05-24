@@ -51,7 +51,10 @@ const AboutEventCard = () => {
             >
                 <div
                     className="bg-white p-[24px] rounded-2xl"
-                    style={{ borderRadius: "20px" }}
+                    style={{ borderRadius: "20px",
+                        background: "radial-gradient(140.65% 140.65% at 17.4% 5.37%, #FAFAFA 0%, #FAFAFA 49.5%, #F2EDFC 100%)"
+
+                     }}
                 >
                     <div className="flex flex-row items-center gap-2">
                         {/* SVG ICON */}
@@ -85,6 +88,7 @@ const AboutEventCard = () => {
                         className="mt-[16px] px-[4px] font-[400] text-[#535353]"
                         style={{
                             fontFamily: "ProximaNovaL",
+                            fontSize: "15px"
                         }}
                     >
                         <p>{isExpanded ? fullText : shortText}</p>
@@ -92,21 +96,25 @@ const AboutEventCard = () => {
                     <div className='md:flex md:flex-row md:gap-[80px]'>
                         <div className='mt-[24px] px-[4px]'>
                             <h1 style={{
-                                color: "#535353"
+                                color: "#535353",
+                                fontSize: "15px"
                             }}>Performing Artist</h1>
                             <p style={{
                                 fontFamily: "ProximaNovaL",
-                                color: "#535353"
+                                color: "#535353",
+                                fontSize: '15px'
                             }}>Anubhav</p>
                         </div>
-                        <div className='mt-[24px] px-[4px]'>
+                        <div className='mt-[18px] px-[4px]'>
                             <h1 style={{
-                                color: "#535353"
+                                color: "#535353",
+                                fontSize: "15px"
                             }}>Supporting Artists
                             </h1>
                             <p style={{
                                 fontFamily: "ProximaNovaL",
-                                color: "#535353"
+                                color: "#535353",
+                                fontSize: "15px"
                             }}>MAJ-R</p>
                         </div>
                     </div>

@@ -134,18 +134,20 @@ const EventOffer = () => {
                                 }}
                             >
                                 <div className="w-full h-full bg-[#FAFAFA] rounded-tr-[10px] rounded-br-[10px]">
-                                    <div className='pt-[18px] px-[20px]'>
+                                    <div className='pt-[18px] px-[20px] truncate whitespace-nowrap overflow-hidden'>
                                         <h1 style={{
                                             fontFamily: 'Prometo',
                                             fontSize: '20px',
                                             fontWeight: 700,
-                                            color: "#373737"
+                                            color: "#373737",
+                                            textOverflow: "ellipsis"
                                         }}>UNLIMITED BEER</h1>
                                         <p style={{
                                             fontFamily: 'ProximaNovaA',
                                             fontSize: '12px',
                                             fontWeight: 600,
-                                            color: "#6F6F6F"
+                                            color: "#6F6F6F",
+                                                                                        textOverflow: "ellipsis"
                                         }}>Valid Thu & Sat  </p>
                                     </div>
 
@@ -166,9 +168,9 @@ const EventOffer = () => {
                     display: 'flex',
                     alignItems: "center"
                 }}>
-                    <ul className="list-disc pl-5 text-[#8170A2]" style={{ 
-                        fontFamily : 'ProximaNovaA',
-                        fontSize : "15px"
+                    <ul className="list-disc pl-5 text-[#8170A2]" style={{
+                        fontFamily: 'ProximaNovaA',
+                        fontSize: "15px"
                     }}>
                         <li>Inclusion details will be added here</li>
                         <li>Inclusion details will be added here</li>

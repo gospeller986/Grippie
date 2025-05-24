@@ -68,9 +68,6 @@ export const FullScreenLandingPage = () => {
         setCurrentIndex(0);
     }, [selectedFilter]);
 
-    useEffect(() => {
-        localStorage.setItem("websiteMode", websiteMode.toString());
-    }, [websiteMode])
 
     return (
         <Inner>

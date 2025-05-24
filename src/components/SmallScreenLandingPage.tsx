@@ -55,7 +55,7 @@ export const SmallScreenLandingPage = () => {
     const [touchEndX, setTouchEndX] = useState<number | null>(null);
     const [direction, setDirection] = useState<"left" | "right" | null>(null);
 
-    const minSwipeDistance = 50; // minimum distance for a swipe
+    const minSwipeDistance = 50;
 
     const handleTouchStart = (e: React.TouchEvent) => {
         setTouchStartX(e.changedTouches[0].clientX);
@@ -84,7 +84,7 @@ export const SmallScreenLandingPage = () => {
     const filteredMenus = menuData.filter((item) => item.category === selectedFilter);
 
     const handleEventRequestReservation = () => {
-        router.push("/event-booking")
+        router.push(`/events/${currentIndex+1}`)
     }
 
     useEffect(() => {
@@ -98,20 +98,19 @@ export const SmallScreenLandingPage = () => {
         setCurrentIndex(0);
     }, [selectedFilter]);
 
-    useEffect(() => {
-        if (!firstRun) {
-            localStorage.setItem("websiteMode", websiteMode.toString());
-        }
-    }, [websiteMode])
 
     useEffect(() => {
         const currWebsiteMode = localStorage.getItem("websiteMode")
         if (currWebsiteMode) {
-            console.log(currWebsiteMode)
             setWebsiteMode(Number(currWebsiteMode));
         }
         setFirstRun(false)
     }, [])
+
+    const handleWebsiteModeChange = (x:number) => {
+        setWebsiteMode(x) ;
+        localStorage.setItem("websiteMode", x.toString());
+    }
 
     return (
         <Inner>
@@ -136,7 +135,7 @@ export const SmallScreenLandingPage = () => {
                     <div className='w-full flex justify-center z-20'>
                         <WebsiteModeButtons
                             websiteMode={websiteMode}
-                            setWebsiteMode={setWebsiteMode}
+                            setWebsiteMode={handleWebsiteModeChange}
                         />
                     </div>
 
