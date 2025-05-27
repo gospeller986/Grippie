@@ -131,7 +131,7 @@ const BookingPage = () => {
                                         <EventDateList
                                             selectedDate={selectedDate}
                                             setSelectedDate={setSelectedDate}
-                                            enabled={enabled}
+                                            isEnabled={enabled?.date}
 
                                         />
                                     </div>

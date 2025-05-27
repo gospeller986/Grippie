@@ -25,6 +25,20 @@ body {
   display: block;
 }
 
+.button-glow::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  right: 10%;
+  height: 12px;
+  border-radius: 10%;
+  background: linear-gradient(79.47deg, #4072FF -17.78%, #5887FF 76.08%);
+  opacity: 0.7;
+  filter: blur(8px);
+  z-index: -1;
+}
+
 @font-face {
 	font-family: 'ProximaNovaA';
 	src: url('../assets/fonts/ProximaNovaA-Semibold.woff');

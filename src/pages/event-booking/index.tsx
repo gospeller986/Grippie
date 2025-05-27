@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 
 const EventBookingPage = () => {
     const router = useRouter();
-    const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+    const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
     const [stagCount, setStagCount] = useState(0);
     const [silverCount, setSilverCount] = useState(0);
     const [referralCode, setRefferalCode] = useState("");
@@ -122,6 +122,7 @@ const EventBookingPage = () => {
                                                 selectedDate={selectedDate}
                                                 setSelectedDate={setSelectedDate}
                                                 nextNumberOfDays={4}
+                                                isEnabled={true}
                                             />
 
                                         </div>

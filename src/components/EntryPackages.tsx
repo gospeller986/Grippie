@@ -62,7 +62,7 @@ const EntryPackages = (props: Props) => {
                             justifyContent: "center"
                         }}
                     >
-                        <h1 className={` ${props?.coupleEntry ? "text-white" : "text-[#5B5ED4]" } `}>{props?.coupleEntry ? "Added" : "Add"}</h1>
+                        <h1 className={` ${props?.coupleEntry ? "text-white" : "text-[#5B5ED4]" } `}>{props?.coupleEntry ? "1" : "Add"}</h1>
                     </button>
                 </div>
                 <div className='mt-[19px]'>

@@ -25,7 +25,7 @@ const WebsiteModeButtons = (props: Props) => {
         <div className={`w-full md:w-[520px] px-[44px] transition-all duration-500 ease-in-out z-20  ${websiteMode === 1 ? 'md:top-[155px] top-[115px]' : 'md:top-[726px] top-[460px]'}`}
          style={{ zIndex: 10, display: "flex", position: 'absolute' }}>
             <button
-                className={`w-full hover:shadow-md ${websiteMode === 0 ? "shadow-2xl backdrop-blur-xl -mr-2 z-20" : ""}`}
+                className={`w-full hover:shadow-md ${websiteMode === 0 ? "button-glow  -mr-2 z-20" : ""}`}
                 style={{
                     ...baseDualButtonStyles,
                     background: websiteMode === 0 ? 'linear-gradient(79.47deg, #6239C9 -17.78%, #3855FF 76.08%)' : "#ECECEC",
@@ -41,7 +41,7 @@ const WebsiteModeButtons = (props: Props) => {
                 Dine-in
             </button>
             <button
-                className={`w-full hover:shadow-md ${websiteMode === 1 ? "shadow-2xl backdrop-blur-xl -ml-2" : ""}`}
+                className={`w-full hover:shadow-md ${websiteMode === 1 ? "button-glow z-20 -ml-2" : ""}`}
                 style={{
                     ...baseDualButtonStyles,
                     background: websiteMode === 1 ? 'linear-gradient(79.47deg, #6239C9 -17.78%, #3855FF 76.08%)' : "#ECECEC",
