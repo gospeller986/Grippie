@@ -65,6 +65,12 @@ button {
   @apply transition-transform transform duration-150 ease-in-out hover:scale-105 active:scale-95 touch-manipulation cursor-pointer;
 }
 
+button:disabled {
+  @apply text-gray-400 bg-gray-100 border-gray-300 cursor-not-allowed;
+  pointer-events: none;  /* disables all mouse/touch events */
+}
+
+
 
 @media (max-width: 370px) {
   .text-below-370 {

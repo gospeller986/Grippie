@@ -46,7 +46,7 @@ const hours: IHour[] = [
     hour: "4:30",
     meridian: "PM"
   },
-    {
+  {
     hour: "5:00",
     meridian: "PM"
   },
@@ -56,13 +56,21 @@ const hours: IHour[] = [
   },
 ]
 
-const TimeSlotSection = () => {
-  const [selectedTime, setSelectedTime] = useState<string | null>('Afternoon');
-  const [selectedHour, setSelectedHour] = useState<IHour | null>({
-    hour: "12:30",
-    meridian: "PM"
-  });
+interface Props {
+  selectedTime: string | null
+  setSelectedTime: React.Dispatch<React.SetStateAction<string | null>>
+  selectedHour: IHour | null
+  setSelectedHour: React.Dispatch<React.SetStateAction<IHour | null>>
+  enabled: {
+    guest: boolean;
+    date: boolean;
+    time: boolean;
+    seat: boolean;
+  }
+}
 
+const TimeSlotSection = (props: Props) => {
+  const { selectedTime, selectedHour, setSelectedTime, setSelectedHour, enabled } = props;
   return (
     <>
       <div className='w-full justify-center flex flex-col md:flex-row md:gap-10 items-center'>
@@ -71,6 +79,7 @@ const TimeSlotSection = () => {
           <div className="flex gap-4">
             {timings.slice(0, 3).map(({ time }) => (
               <button
+                disabled={!enabled?.time}
                 key={time}
                 onClick={() => setSelectedTime(time)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedTime === time
@@ -87,6 +96,7 @@ const TimeSlotSection = () => {
           <div className="flex gap-4">
             {timings.slice(3).map(({ time }) => (
               <button
+                disabled={!enabled?.time}
                 key={time}
                 onClick={() => setSelectedTime(time)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedTime === time
@@ -105,6 +115,7 @@ const TimeSlotSection = () => {
           <div className="grid grid-cols-3 gap-4 mt-[28px]">
             {hours.slice(0, 9).map((item, index) => (
               <button
+                disabled={!enabled?.time}
                 key={index}
                 onClick={() => setSelectedHour(item)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedHour?.hour === item?.hour
@@ -119,6 +130,7 @@ const TimeSlotSection = () => {
           <div className="flex gap-4">
             {hours.slice(9).map((item, index) => (
               <button
+                disabled={!enabled?.time}
                 key={index}
                 onClick={() => setSelectedHour(item)}
                 className={`px-4 py-2 rounded-xl font-semibold border ${selectedHour?.hour === item?.hour

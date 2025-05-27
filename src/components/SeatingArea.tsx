@@ -16,17 +16,25 @@ const seating: ISeat[] = [
     }
 ]
 
-const SeatingArea = () => {
-    const [selectedSeat, setSelectedSeat] = useState<ISeat | null>(
-        {
-            area: "Outdoor"
-        },
-    )
+interface Props {
+    selectedSeat: ISeat | null
+    setSelectedSeat: React.Dispatch<React.SetStateAction<ISeat | null>>
+    enabled: {
+    guest: boolean;
+    date: boolean;
+    time: boolean;
+    seat: boolean;
+}
+}
+
+const SeatingArea = (props : Props) => {
+    const {selectedSeat , setSelectedSeat , enabled} = props
     return (
         <div>
             <div className="grid grid-cols-3 gap-4 mt-[28px]">
                 {seating.slice(0, 9).map((item, index) => (
                     <button
+                        disabled={!enabled?.seat}
                         key={index}
                         onClick={() => setSelectedSeat(item)}
                         className={`px-4 py-2 rounded-xl font-semibold border ${selectedSeat?.area === item?.area

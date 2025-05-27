@@ -8,7 +8,7 @@ const RestaurantDetailsSection = () => {
     }
     return (
         <>
-            <h1 className='md:text-[40px] text-[22px]'
+            <h1 className='md:text-[40px] text-[25px]'
              style={{ fontWeight: "bold", paddingLeft: "18px", paddingRight: "18px", fontFamily: "Prometo", lineHeight: "12px" }}>Play Qutub</h1>
             <p className='mt-[16px] md:mt-[22px]' style={{ paddingLeft: "18px", paddingRight: "18px", marginTop: '16px', fontWeight: "600" , fontFamily : 'ProximaNovaL' , fontSize : '15px' }}>
                 <span style={{ color: "#8CBB41" }}>OPEN</span>

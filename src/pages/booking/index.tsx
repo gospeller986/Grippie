@@ -1,40 +1,54 @@
 import CommonFooter from '@/components/CommonFooter';
 import EventDateList from '@/components/EventDateList';
 import GuestCount from '@/components/GuestCount'
-import LandingFooter from '@/components/LandingFooter';
 import Inner from '@/components/Layout/Inner';
 import SeatingArea from '@/components/SeatingArea';
 import TimeSlotSection from '@/components/TimeSlotSection';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-interface IDate {
-    day: string,
-    date: string,
-    month: string
+interface IHour {
+    hour: string,
+    meridian: string
 }
 
-const DateList: IDate[] = [
-    { day: "SAT", date: "1", month: "Mar" },
-    { day: "SUN", date: "2", month: "Mar" },
-    { day: "MON", date: "3", month: "Mar" },
-    { day: "TUE", date: "4", month: "Mar" },
-    { day: "WED", date: "5", month: "Mar" },
-    { day: "THU", date: "6", month: "Mar" },
-    { day: "FRI", date: "7", month: "Mar" },
-    { day: "SAT", date: "8", month: "Mar" },
-    { day: "SUN", date: "9", month: "Mar" },
-];
+
+interface ISeat {
+    area: string
+}
+
 
 const BookingPage = () => {
     const router = useRouter();
-    const [selectedGuest, setSelectedGuest] = useState<number>(1);
-    const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+    const [selectedGuest, setSelectedGuest] = useState<number | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+    const [selectedTime, setSelectedTime] = useState<string | null>(null);
+    const [selectedHour, setSelectedHour] = useState<IHour | null>(null);
+    const [selectedSeat, setSelectedSeat] = useState<ISeat | null>(null)
+    const [enabled, setEnabled] = useState({
+        guest: true,
+        date: false,
+        time: false,
+        seat: false,
+    })
     const guests: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
 
     const handleConfirmDetails = () => {
         router.push("/request")
     }
+
+
+    useEffect(() => {
+        setEnabled((prev) => ({
+            guest: true,
+            date: prev.date || selectedGuest !== null,
+            time: prev.time || selectedDate !== undefined,
+            seat: prev.seat || selectedTime !== null || selectedHour !== null,
+        }));
+    }, [selectedGuest, selectedDate, selectedTime, selectedHour]);
+    useEffect(() => {
+        console.log(enabled)
+    }, [enabled])
     return (
         <Inner>
             <div className='h-full w-full' style={{
@@ -110,13 +124,15 @@ const BookingPage = () => {
                                             <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 1C5 0.585786 4.66421 0.25 4.25 0.25C3.83578 0.25 3.5 0.585786 3.5 1H5ZM3.5 3.46385C3.5 3.87806 3.83578 4.21385 4.25 4.21385C4.66421 4.21385 5 3.87806 5 3.46385H3.5ZM10 3.46385C10 3.87806 10.3358 4.21385 10.75 4.21385C11.1642 4.21385 11.5 3.87806 11.5 3.46385H10ZM11.5 1.00002C11.5 0.58581 11.1642 0.250023 10.75 0.250023C10.3358 0.250023 10 0.58581 10 1.00002H11.5ZM1 12.5495L1.75 12.5495L1 12.5495ZM1.00001 4.38098L1.75001 4.38099V4.38098H1.00001ZM3.5 1V3.46385H5V1H3.5ZM10.75 2.68044H11.5625V1.18044H10.75V2.68044ZM10 1.93044V3.46385H11.5V1.93044H10ZM11.5 1.93044V1.00002H10V1.93044H11.5ZM0.250004 12.5495C0.250001 14.3133 1.67332 15.75 3.4375 15.75V14.25C2.50929 14.25 1.75 13.4924 1.75 12.5495L0.250004 12.5495ZM13.25 12.5495C13.25 13.4924 12.4907 14.25 11.5625 14.25V15.75C13.3267 15.75 14.75 14.3133 14.75 12.5495H13.25ZM14.75 4.38098C14.75 2.61715 13.3267 1.18044 11.5625 1.18044V2.68044C12.4907 2.68044 13.25 3.43802 13.25 4.38098H14.75ZM1.75001 4.38098C1.75001 3.43802 2.5093 2.68044 3.43751 2.68044V1.18044C1.67333 1.18044 0.250009 2.61715 0.250009 4.38098H1.75001ZM1 6.85398H14V5.35398H1V6.85398ZM13.25 4.38098V12.5495H14.75V4.38098H13.25ZM1.75 12.5495L1.75001 4.38099L0.250009 4.38098L0.250004 12.5495L1.75 12.5495ZM3.43751 2.68044H10.75V1.18044H3.43751V2.68044ZM11.5625 14.25H3.4375V15.75H11.5625V14.25Z" fill="#8B6EC1" />
                                             </svg>
-                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: "#8B6EC1",  fontFamily: "ProximaNovaR" }}>Choose Date</h1>
+                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: !enabled?.date ? '#99a1af'  :   "#8B6EC1", fontFamily: "ProximaNovaR" }}>Choose Date</h1>
                                         </div>
                                         <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[21px] ' />
 
                                         <EventDateList
                                             selectedDate={selectedDate}
                                             setSelectedDate={setSelectedDate}
+                                            enabled={enabled}
+
                                         />
                                     </div>
                                 </div>
@@ -129,11 +145,17 @@ const BookingPage = () => {
                                                 <path d="M11.3359 8.08855H8.05617V5.24769C8.05617 4.78234 7.67911 4.40527 7.21376 4.40527C6.7484 4.40527 6.37134 4.78234 6.37134 5.24769V8.93097C6.37134 9.39632 6.7484 9.77339 7.21376 9.77339H11.3359C11.8012 9.77339 12.1783 9.39632 12.1783 8.93097C12.1783 8.46562 11.8011 8.08855 11.3359 8.08855Z" fill="#8B6EC1" />
                                             </svg>
 
-                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: "#8B6EC1",  fontFamily: "ProximaNovaR" }}>Choose Time Slot</h1>
+                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: !enabled?.time ? '#99a1af'  :   "#8B6EC1", fontFamily: "ProximaNovaR" }}>Choose Time Slot</h1>
                                         </div>
                                         <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[28px] md:mb-[0px]' />
 
-                                        <TimeSlotSection />
+                                        <TimeSlotSection
+                                            selectedTime={selectedTime}
+                                            setSelectedTime={setSelectedTime}
+                                            selectedHour={selectedHour}
+                                            setSelectedHour={setSelectedHour}
+                                            enabled={enabled}
+                                        />
                                     </div>
 
                                 </div>
@@ -145,11 +167,15 @@ const BookingPage = () => {
                                                 <path d="M11.3359 8.08855H8.05617V5.24769C8.05617 4.78234 7.67911 4.40527 7.21376 4.40527C6.7484 4.40527 6.37134 4.78234 6.37134 5.24769V8.93097C6.37134 9.39632 6.7484 9.77339 7.21376 9.77339H11.3359C11.8012 9.77339 12.1783 9.39632 12.1783 8.93097C12.1783 8.46562 11.8011 8.08855 11.3359 8.08855Z" fill="#8B6EC1" />
                                             </svg>
 
-                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: "#8B6EC1",  fontFamily: "ProximaNovaR" }}>Choose Seating Area</h1>
+                                            <h1 style={{ fontSize: 18, fontWeight: 700, color: !enabled?.seat ? '#99a1af'  :   "#8B6EC1", fontFamily: "ProximaNovaR" }}>Choose Seating Area</h1>
                                         </div>
                                         <div className='w-full h-[1px] mt-[15px] opacity-[48%] bg-[#C4C4C4] mb-[21px] ' />
 
-                                        <SeatingArea />
+                                        <SeatingArea
+                                            selectedSeat={selectedSeat}
+                                            setSelectedSeat={setSelectedSeat}
+                                            enabled={enabled}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +198,7 @@ const BookingPage = () => {
                     </div>
 
                     <div className='mt-[42px] w-full md:flex justify-center relative '>
-                        <CommonFooter/>
+                        <CommonFooter />
                     </div>
 
                 </div>
