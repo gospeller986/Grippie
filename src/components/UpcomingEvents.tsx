@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import EventImage from "@/images/event.png"
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 
 const UpcomingEvents = () => {
-    const router = useRouter() ;
+    const router = useRouter();
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [isEnd, setIsEnd] = useState(false);
     const viewAllEventsHandler = () => {
-         router.push("/all-events")
+        router.push("/all-events")
     }
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (el) {
+      const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+      setIsEnd(isAtBottom);
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener("scroll", handleScroll);
+      handleScroll(); // Initial check
+      return () => el.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
     return (
-        <div className='w-full flex justify-center mt-10  px-[18px]' style={{fontFamily : "ProximaNovaA"}}>
+        <div className='w-full flex justify-center mt-10  px-[18px]' style={{ fontFamily: "ProximaNovaA" }}>
             <div className='bg-white w-[365px] h-full rounded-[20px] p-[18px] relative  '
                 style={{
                     border: '1.5px ',
@@ -42,9 +60,8 @@ const UpcomingEvents = () => {
 
                 <hr className="my-3 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
 
-                <div className="overflow-y-scroll flex flex-col gap-3 pr-2 scrollbar-hide mt-5" style={{ maxHeight: '175px' }}>
-                    {/* Example Event Card */}
-                    {[...Array(3)].map((_, i) => (
+                <div ref={scrollRef} className="overflow-y-scroll flex flex-col gap-3 pr-1 scrollbar-hide mt-5" style={{ maxHeight: '175px' }}>
+                    {[...Array(5)].map((_, i) => (
                         <div key={i} className="flex bg-[#F2EDFA] rounded-lg  w-full h-[107px]">
                             <Image src={EventImage} alt="event" className="w-[80px] h-[full] rounded-tl-lg rounded-bl-lg object-cover" />
                             <div className="ml-3 flex flex-col justify-center p-[24px] gap-1">
@@ -53,23 +70,25 @@ const UpcomingEvents = () => {
                             </div>
                         </div>
                     ))}
-                    <div className="pointer-events-none absolute bottom-[78px] left-0 w-full h-[55px] bg-gradient-to-t from-white to-transparent z-10" />
+                    {!isEnd && (
+                        <div className="pointer-events-none absolute bottom-[78px] left-0 w-full h-[55px] bg-gradient-to-t from-white to-transparent z-10" />
+                    )}
                 </div>
 
-                <button 
-                onClick={() => viewAllEventsHandler() }
-                style={{
-                    background: 'linear-gradient(79.47deg, #6239C9 -17.78%, #3855FF 76.08%)',
-                    width: "100%",
-                    borderRadius: "14px",
-                    fontSize: "20px",
-                    fontWeight: 700,
-                    color: "white",
-                    zIndex: 100,
-                    border: "1.5px solid",
-                    borderImageSource: "linear-gradient(90deg, #4BA2F9 0%, #95ACFF 100%)",
-                    height : "60px",
-                }}>
+                <button
+                    onClick={() => viewAllEventsHandler()}
+                    style={{
+                        background: 'linear-gradient(79.47deg, #6239C9 -17.78%, #3855FF 76.08%)',
+                        width: "100%",
+                        borderRadius: "14px",
+                        fontSize: "20px",
+                        fontWeight: 700,
+                        color: "white",
+                        zIndex: 100,
+                        border: "1.5px solid",
+                        borderImageSource: "linear-gradient(90deg, #4BA2F9 0%, #95ACFF 100%)",
+                        height: "60px",
+                    }}>
                     View all Events
                 </button>
 
